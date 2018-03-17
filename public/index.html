@@ -1,0 +1,30 @@
+<!DOC html>
+<html>
+<head>
+  <title>Psych Memory Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div><p id="top-bar"></p></div>
+    <h1><strong>Psych</strong> Matching Game</h1>
+    <p id="intro-paragraph"> &nbsp Welcome to the Psych memory game! This game is devoted to the USA original show.</br>
+      In this game you will channel your inner Shawn Spencer and match the shapes under</br> 
+      certain tiles with other tiles that have the same shape. Good luck!</p>
+    <img src="http://138.68.26.70/photos/PsychCup.jpg" alt="A picture of a Psych mug">
+    <p class="picture-credit">This picture was obtained from <em>yellowblade67</em> via Flickr (link below).</p>
+    <p class="picture-credit">Note: the background picture was obtained from <em>Rinet IT Austrialia</em> via Flickr.</br>
+      The picture was enlarged to fit the background. A link can be found below.</p> 
+    <form v-on:submit.prevent="createGame">
+      <button>Start New Game</button>
+    </form>
+    <p><a class="picture-link" href="https://www.flickr.com/photos/33427671@N06/3173076248/in/photolist-5QoR2b-6Hv8mN-egQBVc-8pUgCX-8pUhBz-egWor1-98KsYA-aLbDWD-28JCvf-7yPw7U-98KyrL-5QjGtB-TEVRxQ-5Qk6ga-neSobX-98Kx11-t4N3d-neSogX-dMwVT2-neSi2C-neSnWt-3nuwVv-8sgiuL-5cCGVP-neRuoP-neSmmn-5QjUyM-LBeoh-98GiFK-neS7F7-98GmKK-98KxKu-cM4HX-cMdtN-6BfxCi-nw4Usx-6HvboS-nw6yM7-neS3aT-qY1xr-oS1CUK-nujhH3-98GmBa-eaU9g-98KyhW-ggeoo-a152Ti-6jgogy-98GkCX-5SJPeB">Link to psych mug picture on Flickr.</a></p>
+    <p><a class="picture-link" href="https://www.flickr.com/photos/159161473@N04/40058896892/in/photolist-242Sjq5-49ppCu-hLo9FX-c1zJ7h-88kaBr-773QS7-2ZRpNc-EV479S-61CMab-5ZoEY8-2DDWRM-nPxVUd-3NoZa-ae1Fg6-9BCtMi-4DiCpB-4rk8Xc-4YSdiz-pB1eS4-4j2dBU-49poYq-7tB8eC-awdyBZ-4rpepG-twLwd-atLtsx-d2RF4U-8Zef8v-hytQdH-5ZxQXF-8hUXkB-zdVu7-c3PzY-oYNgmj-7r78R7-5yXNRr-4LHqPW-snPsxY-4GtFch-9tPHgW-49kmuB-gqNbA6-s3Q8F2-7ueZU7-a5tUCi-6gpmGY-fRoeb-4MAhTi-8hYcWw-8hUWmv">Link to background pinapple picture.</a></p> 
+    <footer>
+      <p id="footer-paragraph"><a href="https://github.com/zyoung55/creative-project-node">Link for creative project</a></p>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
