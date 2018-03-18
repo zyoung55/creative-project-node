@@ -12,6 +12,7 @@ var app = new Vue({
 	    boardImage: 'http://138.68.26.70/photos/Plywood.png',
 	    show: false,
 	    numTimesUsed: 0,
+	    gameSelected: false,
 	},
 	created: function() {
 	    this.addImages();
@@ -110,6 +111,7 @@ var app = new Vue({
 		    }).catch(err => {
 		    })
 	       }
+		this.gameSelected = true;
 	    },
 	},
     });
