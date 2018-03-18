@@ -85,7 +85,6 @@ var app = new Vue({
 			    console.log("made it");
 			    console.log(this.numsRemaining[this.numsRemaining.length - 1], this.randomNumber, "Last index numsRemaining", "random number");
 			    this.randomNumber = this.numsRemaining[this.numsRemaining.length - 1];
-			    // console.log("Random Number!!!!!", this.randomNumber);
 			    this.numsRemaining.pop();
 			    --highestIndexOfNumberArray;
 			    this.numberOfPictures.pop();

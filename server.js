@@ -30,7 +30,12 @@ app.post('/api/picture/boardImage', (req, res) => {
 
 app.put('/api/items', (req, res) => {
 	id = id + 1;
-	items.push({id: id, image:req.body.image, show: req.body.show});
+	for (var i = 0; i < items.length; ++i) {
+	    if (items[i].index === req.body.indexToChange) {
+		items.splice(i, 1, {id: id, image:req.body.image, show: req.body.show});
+		//items.push({id: id, image:req.body.image, show: req.body.show});
+	    }
+	}
 	res.send(items);
     });
 
