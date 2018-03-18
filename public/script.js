@@ -8,6 +8,8 @@ var app = new Vue({
 	    numsAlreadyUsed: [],
 	    numsRemaining: [],
 	    randomNumber: 0,
+	    firstChoice: '',
+	    secondChoice: '',
 	    image: '',
 	    boardImage: 'http://138.68.26.70/photos/Plywood.png',
 	    show: false,
