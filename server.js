@@ -29,17 +29,19 @@ app.post('/api/picture/boardImage', (req, res) => {
     });
 
 app.put('/api/items', (req, res) => {
+	let identificationToChange = req.body.indexToChange + 1;
 	if (id === 16) {
 	    id = 0;
 	}
 	id = id + 1;
-	for (var i = 0; i < items.length; ++i) {
-	    if (items[i].index === req.body.indexToChange) {
+	/*for (var i = 0; i < items.length; ++i) {
+	    if (items[i].id === identificationToChange) {
 		items.splice(i, 1, {id: id, image:req.body.image, show: req.body.show});
 		console.log(item[i]);
 		//items.push({id: id, image:req.body.image, show: req.body.show});
 	    }
-	}
+	    }*/
+	items.splice(id, 1, {id: id, image:req.body.image, show: req.body.show});
 	res.send(items);
     });
 
