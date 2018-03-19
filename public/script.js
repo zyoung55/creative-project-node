@@ -22,10 +22,13 @@ var app = new Vue({
 	methods: {
 	    getItems: function() {
 		axios.get("/api/items").then(response => { //
-			this.pictures = this.response.data;
-			console.log(this.pictures, "getItemsResponse");
+			this.items = response.data; //fixme
+			console.log(response.data, "response");
+			console.log(this.items, "get items response");
+			console.log("Gotcha!!!!!!!");
 			return true;
 		}).catch(err => {
+			console.log("error", err.response.data);
 		});
 	    },
 	    addImages: function() {
@@ -139,6 +142,7 @@ var app = new Vue({
 		this.clearNumsAlreadyUsed();
 		console.log(this.numberOfPictures, "number of pictures");
 		this.gameSelected = true;
+		//console.log(this.items, "Items Yo");
 	    },
 	},
     });

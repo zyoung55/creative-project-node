@@ -18,7 +18,7 @@
     </form>
     <div v-if="gameSelected === true">
       <p>Start Game!</p>
-       <img  class="game-pictures" v-for="(picture, index) in randomizedPictures" v-bind:src="picture" alt="a random photo">
+       <img  class="game-pictures" v-for="(item, index) in items" v-bind:src="item.image" alt="a random photo">
        <p>Use the below boxes to check the pictures behind the panel. Panels go in order from left to right.</p>
        <form v-on:submit.prevent>
 	 <input class="choice-input" type="text" v-model="firstChoice" placeholder="firstChoice">

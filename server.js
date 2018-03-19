@@ -14,6 +14,7 @@ let indexToChange;
 let show;
 
 app.get('/api/items', (req, res) => {
+	console.log(items);
 	res.send(items);
     });
 
@@ -34,14 +35,7 @@ app.put('/api/items', (req, res) => {
 	    id = 0;
 	}
 	id = id + 1;
-	/*for (var i = 0; i < items.length; ++i) {
-	    if (items[i].id === identificationToChange) {
-		items.splice(i, 1, {id: id, image:req.body.image, show: req.body.show});
-		console.log(item[i]);
-		//items.push({id: id, image:req.body.image, show: req.body.show});
-	    }
-	    }*/
-	items.splice(id, 1, {id: id, image:req.body.image, show: req.body.show});
+	items.splice(id - 1, 1, {id: id, image:req.body.image, show: req.body.show});
 	res.send(items);
     });
 
