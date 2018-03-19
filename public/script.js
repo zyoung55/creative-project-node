@@ -7,6 +7,8 @@ var app = new Vue({
 	    numberOfPictures: [],
 	    numsAlreadyUsed: [],
 	    numsRemaining: [],
+	    tempArrrayWithBoard: [],
+	    arrayWithBoard: [],
 	    randomNumber: 0,
 	    firstChoice: '',
 	    secondChoice: '',
@@ -142,7 +144,31 @@ var app = new Vue({
 		this.clearNumsAlreadyUsed();
 		console.log(this.numberOfPictures, "number of pictures");
 		this.gameSelected = true;
-		//console.log(this.items, "Items Yo");
+	    },
+	    createArrayWithBoard: function() { //May have problem with this function.
+		this.tempArrayWithBoard  = this.items;
+		for (var i = 0; i < this.tempArrayWithBoard.length; ++i) {
+		    if (this.tempArrayWithBoard[i].show === false) {
+			this.arrayWithBoard[i].push({id: i + 1, image: boardImage, show: false});
+			axios.put('/api/boardAndItems', {
+			     image: this.boardImage,
+			     show: false,
+			}).then(response => {
+				this.getItems(); //watch out                                                                                                                    
+                        }).catch(err => {
+			})
+		    }
+		    else if (this.tempArrayWithBoard[i].show === true) {
+			this.arrayWithBoard[i] = tempArrayWithBoard[i];
+			axios.put('/api/boardAndItems', {
+			     image: this.arrayWithBoard[i],
+			     show: true,
+			}).then(response => {
+			     this.getItems(); //watch out                                                                                                                         
+			}).catch(err => {
+			})
+		   }
+		}
 	    },
 	},
     });

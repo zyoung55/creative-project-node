@@ -12,10 +12,27 @@ let boardImage;
 let id = 0;
 let indexToChange;
 let show;
+let arrayWithBoard = [];
 
 app.get('/api/items', (req, res) => {
 	console.log(items);
 	res.send(items);
+    });
+
+app.put('/api/boardandItems', (req, res) => {
+	let identificationToChange = req.body.indexToChange + 1;
+        if (id === 16) {
+            id = 0;
+        }
+	if (arrayWithBoard.length < 16) {
+	    id = id + 1;
+	    arrayWithBoard.push({id: id, image: req.body.image, show: req.body.show});
+	}
+	else if (arrayWithBoard.length === 16) {
+	    id = id + 1;
+	    arrayWithBoard.splice(id - 1, 1, {id: id, image:req.body.image, show: req.body.show});
+	}
+      res.send(arrayWithBoard);
     });
 
 app.post('/api/items', (req, res) => {
