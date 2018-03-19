@@ -22,6 +22,8 @@ var app = new Vue({
 	methods: {
 	    getItems: function() {
 		axios.get("/api/items").then(response => { //
+			this.pictures = this.response.data;
+			console.log(this.pictures, "getItemsResponse");
 			return true;
 		}).catch(err => {
 		});
@@ -123,12 +125,12 @@ var app = new Vue({
 		    this.numsAlreadyUsed.push(this.randomNumber);
 		    foundNumAlreadUsed = false;
 		    this.randomizedPictures[i] = this.pictures[this.randomNumber];
-		    axios.put("/api/items", {
+		    axios.put('/api/items', {
 		       indexToChange: i, 
 		       image: this.randomizedPictures[i],
 		       show: this.show,
 		    }).then(response => {
-		       this.getItems();
+		       this.getItems(); //watch out
 		    }).catch(err => {
 		    })
 	       }

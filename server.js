@@ -29,10 +29,14 @@ app.post('/api/picture/boardImage', (req, res) => {
     });
 
 app.put('/api/items', (req, res) => {
+	if (id === 16) {
+	    id = 0;
+	}
 	id = id + 1;
 	for (var i = 0; i < items.length; ++i) {
 	    if (items[i].index === req.body.indexToChange) {
 		items.splice(i, 1, {id: id, image:req.body.image, show: req.body.show});
+		console.log(item[i]);
 		//items.push({id: id, image:req.body.image, show: req.body.show});
 	    }
 	}
