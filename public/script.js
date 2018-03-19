@@ -21,7 +21,7 @@ var app = new Vue({
 	},
 	methods: {
 	    getItems: function() {
-		axios.get("/api/items").then(response => {
+		axios.get("/api/items").then(response => { //
 			return true;
 		}).catch(err => {
 		});
@@ -72,7 +72,26 @@ var app = new Vue({
                     console.log(this.numberOfPictures[i]);
 		}
             },
-	    createGame: function() {
+	    clearNumberOfPictures: function() {
+		var numPicturesCurrently = this.numberOfPictures.length;
+		for (var i = 0; i < numPicturesCurrently; ++i) {
+		    this.numberOfPictures.pop();
+		    console.log(this.numberOfPictures, "Real number of Pictures");
+		}
+	    },
+	    clearNumsRemaining: function() {
+		var numsRemainingCurrently = this.numsRemaining.length;
+		for (var i = 0; i < numsRemainingCurrently; ++i) {
+		    this.numsRemaining.pop();
+		}
+	    },
+	    clearNumsAlreadyUsed: function() {
+		var numsAlreadyUsedCurrently = this.numsAlreadyUsed.length;
+		for (var i = 0; i < numsAlreadyUsedCurrently; ++i) {
+		    this.numsAlreadyUsed.pop();
+		}
+	    },
+	    createGame: function() {	    
 		var foundNumAlreadyUsed = false;
 		var numberUsed = 0;
 		this.numsAlreadyUsed.push(155);
@@ -113,6 +132,10 @@ var app = new Vue({
 		    }).catch(err => {
 		    })
 	       }
+		this.clearNumberOfPictures();
+		this.clearNumsRemaining();
+		this.clearNumsAlreadyUsed();
+		console.log(this.numberOfPictures, "number of pictures");
 		this.gameSelected = true;
 	    },
 	},
