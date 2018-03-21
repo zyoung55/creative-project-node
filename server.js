@@ -16,15 +16,23 @@ let arrayWithBoard = [];
 
 app.get('/api/items', (req, res) => {
 	console.log(items);
+	console.log("honey");
 	res.send(items);
     });
 
-app.put('/api/boardandItems', (req, res) => {
+app.get('/api/boardAndItems', (req, res) => {
+	console.log(items, "AAYAYA");
+	res.send(arrayWithBoard);
+    });
+
+app.post('/api/boardAndItems', (req, res) => {
 	let identificationToChange = req.body.indexToChange + 1;
+	console.log("made it sucka");
         if (id === 16) {
             id = 0;
         }
 	if (arrayWithBoard.length < 16) {
+	    console.log("me too");
 	    id = id + 1;
 	    arrayWithBoard.push({id: id, image: req.body.image, show: req.body.show});
 	}
@@ -32,6 +40,7 @@ app.put('/api/boardandItems', (req, res) => {
 	    id = id + 1;
 	    arrayWithBoard.splice(id - 1, 1, {id: id, image:req.body.image, show: req.body.show});
 	}
+	console.log("ArrayWithBoard", arrayWithBoard);
       res.send(arrayWithBoard);
     });
 
