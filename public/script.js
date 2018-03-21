@@ -18,6 +18,7 @@ var app = new Vue({
 	    numTimesUsed: 0,
 	    gameSelected: false,
 	    showNewBoard: false,
+	    tryAgain: false,
 	},
 	created: function() {
 	    this.addImages();
@@ -129,8 +130,10 @@ var app = new Vue({
 		this.getItems();
 		console.log(this.firstChoice, "firstChoice", this.secondChoice, "second CHoice");
 		console.log(this.items, "Items in change pannel")
-		this.items[this.firstChoice].show = true;
-		this.items[this.secondChoice].show = true;
+		if (this.firstChoice !== ' ' && this.secondChoice !== ' ') {
+		    this.items[this.firstChoice].show = true;
+		    this.items[this.secondChoice].show = true;
+		}
 		for (var i = 0; i < this.items.length; ++i) {
 		    if (this.items[i].show === false) {
 			tempObject = {id: i + 1, image: this.boardImage, show: false};
@@ -144,6 +147,15 @@ var app = new Vue({
 		    }).catch(err => {
 		    })
 		 }
+	    },
+	    retry: function() {
+		this.items[this.firstChoice].show = false;
+		this.items[this.secondChoice].show = false;
+		this.firstChoice = ' ';
+		this.secondChoice = ' ';
+		this.changePannels();
+		this.getItems();
+		this.tryAgaig = true;
 	    },
 	    createGame: function() {	    
 		var foundNumAlreadyUsed = false;
@@ -205,37 +217,6 @@ var app = new Vue({
 		}
 		console.log(this.arrayWithBoard);
 		this.clearArrayWithBoard();
-		/*console.log("made it");
-		console.log(this.arrayWithBoard, "ArrayWithBoard");
-		console.log(this.items);
-		console.log(this.items.length, "items.length");
-		for (var i = 0; i < this.items.length; ++i) {
-		    console.log(i, "i");
-		    console.log("winky face");
-		    if (this.items[i].show === false) {
-			tempObject = {id: i + 1, image: this.boardImage, show: false};
-			this.arrayWithBoard.push(tempObject);
-			axios.post('/api/boardAndItems', {
-			     image: this.boardImage,
-			     show: false,
-			}).then(response => {
-				this.getArrayWithBoard(); //watch out
-                        }).catch(err => {
-			})
-		    }
-		    else if (this.items[i].show === true) {
-			this.arrayWithBoard[i] = this.items[i];
-			axios.post('/api/boardAndItems', {
-			     image: this.arrayWithBoard[i],
-			     show: true,
-			}).then(response => {
-			     this.getArrayWithBoard(); //watch out 
-			}).catch(err => {
-			})
-		   }
-		}
-		console.log(this.arrayWithBoard, "Array with board yo");*/
-		
 	    },
 	},
     });
